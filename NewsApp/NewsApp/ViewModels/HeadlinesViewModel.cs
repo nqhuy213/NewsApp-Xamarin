@@ -13,6 +13,13 @@ namespace NewsApp.ViewModels
     public class HeadlinesViewModel: ViewModel
     {
         private readonly NewsService Service;
+        public ICommand ItemSelected =>
+            new Command(async (selectedItem) =>
+            {
+                var selectedArticle = selectedItem as Article;
+                var url = HttpUtility.UrlEncode(selectedArticle.Url);
+
+            });
         public NewsResult CurrentNews { get; set; }
         public HeadlinesViewModel(NewsService service)
         {
@@ -36,12 +43,6 @@ namespace NewsApp.ViewModels
             await Initialize(resolvedScope);
         }
 
-        public ICommand ItemSelected =>
-            new Command(async (selectedItem) =>
-            {
-                var selectedArticle = selectedItem as Article;
-                var url = HttpUtility.UrlEncode(selectedArticle.Url);
-
-            });
+        
     }
 }

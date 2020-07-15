@@ -7,12 +7,35 @@
        xmlns:views="clr-namespace:NewsApp.Views"
        x:Class="NewsApp.MainShell">
     <FlyoutItem Title="Home" Icon="{StaticResource HomeIcon}">
-        <ShellContent Title="Headlines" Icon="{StaticResource HeadlinesIcon}">
+        <ShellContent Title="Headlines" 
+                      Icon="{StaticResource HeadlinesIcon}"
+                      ContentTemplate="{DataTemplate views:HeadlinesView}"
+                      >
             <ContentPage Title="Headlines"/>
         </ShellContent>
-        <Tab Title="News" Icon="{StaticResource NewsIcon}">
-            <ContentPage Title="Local"/>
-            <ContentPage Title="Global"/>
+        <Tab Title="News" Route="news" Icon="{StaticResource NewsIcon}">
+            <ShellContent Title="Local" Route="local">
+                <ShellContent.ContentTemplate>
+                    <DataTemplate>
+                        <views:HeadlinesView>
+                            <x:Arguments>
+                                <x:String>Local</x:String>
+                            </x:Arguments>
+                        </views:HeadlinesView>
+                    </DataTemplate>
+                </ShellContent.ContentTemplate>
+            </ShellContent>
+            <ShellContent Title="Global" Route="global">
+                <ShellContent.ContentTemplate>
+                    <DataTemplate>
+                        <views:HeadlinesView>
+                            <x:Arguments>
+                                <x:String>Global</x:String>
+                            </x:Arguments>
+                        </views:HeadlinesView>
+                    </DataTemplate>
+                </ShellContent.ContentTemplate>
+            </ShellContent>
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Settings" Icon="{StaticResource SettingsIcon}">
