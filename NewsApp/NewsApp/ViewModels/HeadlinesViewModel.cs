@@ -18,7 +18,7 @@ namespace NewsApp.ViewModels
             {
                 var selectedArticle = selectedItem as Article;
                 var url = HttpUtility.UrlEncode(selectedArticle.Url);
-
+                await Navigation.NavigateTo($"articleview?url={url}");
             });
         public NewsResult CurrentNews { get; set; }
         public HeadlinesViewModel(NewsService service)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewsApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace NewsApp
         public MainShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute("articleview", typeof(ArticleView));
         }
     }
 }
